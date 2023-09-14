@@ -3,9 +3,9 @@ from AlarmClock.utils import send_message
 import time
 
 alarm = input("New Alarm (HH:MM:SS): ")
-format = "%H:%M:%S"
+alarm_format = "%H:%M:%S"
 
-alarm = datetime.strptime(alarm, format)
+alarm = datetime.strptime(alarm, alarm_format)
 
 alarm_finished = timedelta(hours=alarm.hour, minutes=alarm.minute, 
                            seconds=alarm.second) + datetime.now()
@@ -16,6 +16,7 @@ while datetime.now().time() < alarm_finished.time():
     time.sleep(60)
 
 send_message()
+
 
 class AlarmClock:
 
@@ -29,7 +30,7 @@ class AlarmClock:
         'seconds' - how many seconds the alarm has
         """
         self._config = kwargs
-        if not self._config or len(self._config == 0):
+        if not self._config or len(self._config) == 0:
             raise RuntimeError("A non null value is expected.")
         
     @property
