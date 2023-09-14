@@ -1,5 +1,5 @@
 from datetime import datetime, timedelta
-from utils import send_message
+from AlarmClock.utils import send_message
 import time
 
 alarm = input("New Alarm (HH:MM:SS): ")
