@@ -1,18 +1,19 @@
-from datetime import datetime, timedelta
-from AlarmClock.utils import send_message
+from datetime import datetime
+from alarm_clock import AlarmClock
+from AlarmClock import send_message
 import time
 
+alarm_format = "%H:%M:%S"
 alarm = input("New Alarm (HH:MM:SS): ")
-format = "%H:%M:%S"
+alarm = datetime.strptime(alarm, alarm_format)
+alarm_clock = AlarmClock(hours=alarm.hour, minutes=alarm.minute, seconds=alarm.second, current=datetime.now())
+alarm_finished = alarm_clock.end_time()
 
-alarm = datetime.strptime(alarm, format)
+print(f"Alarm duration: {alarm_clock}")
 
-alarm_finished = timedelta(hours=alarm.hour, minutes=alarm.minute, 
-                           seconds=alarm.second) + datetime.now()
+while not alarm_clock.alarm_has_ended():
+    time.sleep(5)
 
-print(f"See you at {alarm_finished.time()}")
-
-while datetime.now().time() < alarm_finished.time():
-    time.sleep(60)
 
 send_message()
+print("Alarm Ended.")
