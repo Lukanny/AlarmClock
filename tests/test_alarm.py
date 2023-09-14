@@ -2,6 +2,7 @@ import unittest
 
 from AlarmClock import AlarmClock
 
+
 class TestAlarm(unittest.TestCase):
 
     def setUp(self) -> None:
@@ -22,4 +23,3 @@ class TestAlarm(unittest.TestCase):
 
     def test_alarm_is_not_none(self):
         self.assertIsNotNone(self.alarm)
-        
