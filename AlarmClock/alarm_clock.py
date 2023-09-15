@@ -8,7 +8,7 @@ class AlarmClock:
         Class constructor with AlarmClock properties.
 
         Common arguments:
-        hours - minutes - seconds: define alarm duration
+        hours - minutes - seconds: defines alarm duration
         current: current time when alarm was created
         """
         self._config = kwargs
@@ -40,10 +40,8 @@ class AlarmClock:
         return end_time.time()
 
     def alarm_has_ended(self):
-        result = False
-        if datetime.now().time() >= self.end_time():
-            result = True
-        return result
+        ended = datetime.now().time() >= self.end_time()
+        return ended
 
     def __str__(self):
         alarm = f"{self.hours}h{self.minutes}m{self.seconds}s"
