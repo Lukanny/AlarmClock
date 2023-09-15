@@ -1,5 +1,5 @@
 from datetime import datetime
-from alarm_clock import AlarmClock
+from AlarmClock import AlarmClock
 from AlarmClock import send_message
 
 import time
